@@ -3,7 +3,7 @@
     private static $options = [
       "state" => "default",
       "dir" => "component/",
-      "slug" => ".html"
+      "ext" => "html"
     ];
 
     private static function options($options){
@@ -17,16 +17,16 @@
             (array_key_exists("dir", $options))
             ? $options["dir"]
             : self::$options["dir"],
-          "slug" =>
-            (array_key_exists("slug", $options))
-            ? $options["slug"]
-            : self::$options["slug"]
+          "ext" =>
+            (array_key_exists("ext", $options))
+            ? $options["ext"]
+            : self::$options["ext"]
         ];
       } else {
         return [
           "state" => $options,
           "dir" => self::$options["dir"],
-          "slug" => self::$options["slug"]
+          "ext" => self::$options["ext"]
         ];
       }
     }
@@ -47,7 +47,7 @@
     }
     public static function get($name, $parameters = [], $options = "default"){
       $options = self::options($options);
-      $file = @file_get_contents($options["dir"] . $name . $options["slug"]);
+      $file = @file_get_contents($options["dir"] . $name . "." . $options["ext"]);
       /* Getting the contents. */
       $component = self::between($file, "@{$options["state"]}", "{$options["state"]}@");
       /* Getting the state. */
