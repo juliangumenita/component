@@ -57,7 +57,7 @@
       /* Replacing all of the parameters. */
       $component = preg_replace("/{[\s\S]+?}/", null, $component);
       /* Cleaning all unused parameters. */
-      return $component . "<br>";
+      return $component;
     }
   }
 ?>
